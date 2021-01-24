@@ -30,6 +30,9 @@ config :auth, AuthWeb.Endpoint,
     ]
   ]
 
+config :auth, Auth.Mailer
+  adapter: Swoosh.Adapters.Local
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

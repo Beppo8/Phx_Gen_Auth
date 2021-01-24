@@ -1,4 +1,5 @@
 defmodule Auth.Accounts.UserNotifier do
+  import Swoosh.Email
   # For simplicity, this module simply logs messages to the terminal.
   # You should replace it by a proper email or notification tool, such as:
   #
@@ -15,7 +16,7 @@ defmodule Auth.Accounts.UserNotifier do
   Deliver instructions to confirm account.
   """
   def deliver_confirmation_instructions(user, url) do
-    deliver(user.email, """
+    body = """
 
     ==============================
 
@@ -28,7 +29,14 @@ defmodule Auth.Accounts.UserNotifier do
     If you didn't create an account with us, please ignore this.
 
     ==============================
-    """)
+    """
+
+    new()
+    |> to(user.email)
+    |> from("noreply@example.com")
+    |> subject("Password reset email")
+    |> text_body(body)
+    |> Auth.Mailer.deliver()
   end
 
   @doc """
