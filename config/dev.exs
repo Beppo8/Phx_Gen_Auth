@@ -30,7 +30,7 @@ config :auth, AuthWeb.Endpoint,
     ]
   ]
 
-config :auth, Auth.Mailer
+config :auth, Auth.Mailer,
   adapter: Swoosh.Adapters.Local
 
 # ## SSL Support

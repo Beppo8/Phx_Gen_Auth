@@ -47,6 +47,7 @@ defmodule Auth.MixProject do
       {:jason, "~> 1.0"},
       {:phx_gen_auth, "~> 0.6.0", only: [:dev], runtime: false},
       {:swoosh, "~> 1.3"},
+      {:phoenix_swoosh, "~> 0.3.2"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end
